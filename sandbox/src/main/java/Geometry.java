@@ -1,4 +1,4 @@
- public class Triangle {
+ public class Geometry {
     public static void main(String[] args) {
         printSquareArea(8.0);
         printRectangleArea(4.0,5.0);

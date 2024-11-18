@@ -6,7 +6,7 @@ public record Rectangle(
 ) {
 
     public static void printRectangleArea(Rectangle rectangle) {
-        String text = String.format("Площадь прямоугольника со стороной %f и %f = %f",
+        String text = String.format("Площадь прямоугольника со стороной %.2f и %.2f = %.2f",
                 rectangle.a, rectangle.b, rectangle.area());
         System.out.println(text);
     }

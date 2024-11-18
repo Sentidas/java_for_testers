@@ -3,10 +3,15 @@ package ru.sentidas.geometry.figures;
 public class Square {
 
    public static void printSquareArea(double side) {
-       System.out.println("Площадь квадрата со стороной " + side + " = " + squareArea(side));
+       String text = String.format("Площадь квадрата со стороной %f = %f", side, area(side));
+       System.out.println(text);
    }
 
-    private static double squareArea(double a) {
+    public static double area(double a) {
         return a * a;
+    }
+
+    public static double perimeter(double a) {
+       return a * 4;
     }
 }

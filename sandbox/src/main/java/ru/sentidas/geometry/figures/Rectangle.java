@@ -1,14 +1,17 @@
 package ru.sentidas.geometry.figures;
 
-public class Rectangle {
+public record Rectangle(
+        double a,
+        double b
+) {
 
-
-    public static void printRectangleArea(double a, double b) {
-        String text = String.format("Площадь прямоугольника со стороной %f и %f = %f", a, b, rectangleArea(a,b));
+    public static void printRectangleArea(Rectangle rectangle) {
+        String text = String.format("Площадь прямоугольника со стороной %f и %f = %f",
+                rectangle.a, rectangle.b, rectangle.area());
         System.out.println(text);
     }
 
-    public static double rectangleArea(double a, double b) {
-       return a * b;
+    public double area() {
+       return this.a * this.b;
     }
 }

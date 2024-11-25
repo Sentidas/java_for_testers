@@ -2,6 +2,12 @@ package ru.sentidas.geometry.figures;
 
 public record Square(double side) {
 
+    public Square {
+        if (side < 0) {
+            throw new IllegalArgumentException("Square side should be non-negative");
+        }
+    }
+
 
    public static void printSquareArea(Square s) {
        String text = String.format("Площадь квадрата со стороной %.2f = %.2f", s.side, s.area());

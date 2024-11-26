@@ -44,4 +44,14 @@ public class TriangleTests {
             //OK
         }
     }
+
+    @Test
+    void cannotCreateTriangleWithSumOfTwoSideIsLessThird() {
+        try {
+            new Triangle(3.0, 2.0, 8.0);
+            Assertions.fail();
+        } catch (IllegalArgumentException e) {
+            //OK
+        }
+    }
 }

@@ -6,6 +6,10 @@ public Triangle {
     if (a < 0 || b < 0 || c < 0) {
         throw new IllegalArgumentException("Triangle side should be non-negative");
     }
+    if  (a + b < c || a + c < b|| b + c < a) {
+        throw new IllegalArgumentException("The sum of the two sides of " +
+                "the triangle must be greater than the third side");
+    }
 }
 
     public double area() {

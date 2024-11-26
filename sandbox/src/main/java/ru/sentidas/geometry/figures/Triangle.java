@@ -1,6 +1,12 @@
 package ru.sentidas.geometry.figures;
 
-public record Triangle(double a, double b, double c) {
+public record Triangle(double a, double b, double c){
+
+public Triangle {
+    if (a < 0 || b < 0 || c < 0) {
+        throw new IllegalArgumentException("Triangle side should be non-negative");
+    }
+}
 
     public double area() {
         double p = this.perimeter()/2;

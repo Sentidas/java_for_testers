@@ -20,4 +20,20 @@ public class RectangleTests {
             //OK
         }
     }
+
+    @Test
+    void testEquality() {
+        var r1 = new Rectangle(5, 7);
+        var r2 = new Rectangle(5, 7);
+        // Assertions.assertTrue(r1.equals(r2));
+        Assertions.assertEquals(r1, r2);
+    }
+
+    @Test
+    void testEquality2() {
+        var r1 = new Rectangle(5, 7);
+        var r2 = new Rectangle(7, 5);
+       // Assertions.assertTrue(r1.equals(r2));
+        Assertions.assertEquals(r1, r2);
+    }
 }

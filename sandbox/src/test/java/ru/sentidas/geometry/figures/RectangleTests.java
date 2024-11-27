@@ -33,7 +33,6 @@ public class RectangleTests {
     void testEquality2() {
         var r1 = new Rectangle(5, 7);
         var r2 = new Rectangle(7, 5);
-       // Assertions.assertTrue(r1.equals(r2));
         Assertions.assertEquals(r1, r2);
     }
 }

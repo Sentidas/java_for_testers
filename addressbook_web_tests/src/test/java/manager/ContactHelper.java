@@ -40,4 +40,17 @@ public class ContactHelper {
         manager.driver.findElement(By.name("submit")).click();
         manager.driver.findElement(By.linkText("home page")).click();
     }
+
+    public void removeContact() {
+        openHomePage();
+        manager.driver.findElement(By.name("selected[]")).click();
+        manager.driver.findElement(By.cssSelector("input[value=Delete]")).click();
+
+    }
+
+    public void removeAllContacts() {
+        openHomePage();
+        manager.driver.findElement(By.id("MassCB")).click();
+        manager.driver.findElement(By.cssSelector("input[value=Delete]")).click();
+    }
 }

@@ -3,24 +3,21 @@ package manager;
 import model.ContactData;
 import org.openqa.selenium.By;
 
-public class ContactHelper {
-
-    private final ApplicationManager manager;
-
+public class ContactHelper extends HelperBase {
 
     public ContactHelper(ApplicationManager manager){
-        this.manager = manager;
+       super(manager);
     }
 
     public void openContactCreatePage() {
         if (!manager.isElementPresent(By.linkText("Number of results:"))) {
-            manager.driver.findElement(By.linkText("add new")).click();
+            click(By.linkText("add new"));
         }
     }
 
     public void openHomePage() {
         if (!manager.isElementPresent(By.linkText("Edit / add address book entry"))) {
-            manager.driver.findElement(By.linkText("home")).click();
+            click(By.linkText("home"));
         }
     }
 
@@ -31,26 +28,46 @@ public class ContactHelper {
 
     public void createContact(ContactData contact) {
         openContactCreatePage();
-        manager.driver.findElement(By.name("firstname")).click();
-        manager.driver.findElement(By.name("firstname")).sendKeys(contact.first_name());
-        manager.driver.findElement(By.name("middlename")).click();
-        manager.driver.findElement(By.name("middlename")).sendKeys(contact.middle_name());
-        manager.driver.findElement(By.name("lastname")).click();
-        manager.driver.findElement(By.name("lastname")).sendKeys(contact.last_name());
-        manager.driver.findElement(By.name("submit")).click();
-        manager.driver.findElement(By.linkText("home page")).click();
+        fillContactForm(contact);
+        submitContactCreation();
+        returnToHomePage();
     }
 
     public void removeContact() {
         openHomePage();
-        manager.driver.findElement(By.name("selected[]")).click();
-        manager.driver.findElement(By.cssSelector("input[value=Delete]")).click();
-
+        selectContact();
+        removeSelectContact();
     }
-
     public void removeAllContacts() {
         openHomePage();
-        manager.driver.findElement(By.id("MassCB")).click();
-        manager.driver.findElement(By.cssSelector("input[value=Delete]")).click();
+        selectAllContacts();
+        removeSelectContact();
+    }
+
+    private void removeSelectContact() {
+        click(By.cssSelector("input[value=Delete]"));
+    }
+
+    private void selectAllContacts() {
+        click(By.id("MassCB"));
+    }
+
+    public void selectContact() {
+        manager.driver.findElement(By.name("selected[]")).click();
+
+    }
+    private void returnToHomePage() {
+        click(By.linkText("home page"));
+    }
+
+    private void submitContactCreation() {
+        click(By.name("submit"));
+    }
+
+    private void fillContactForm(ContactData contact) {
+        type(By.name("firstname"), contact.first_name());
+        type(By.name("middlename"), contact.middle_name());
+        type(By.name("lastname"), contact.last_name());
+
     }
 }

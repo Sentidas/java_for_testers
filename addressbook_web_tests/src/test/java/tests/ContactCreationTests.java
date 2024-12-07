@@ -8,6 +8,7 @@ public class ContactCreationTests extends TestBase {
     @Test
     public void CanCreateContactWithFIO() {
         app.contacts().createContact(new ContactData("first_name", "middle_name", "last_name"));
+
     }
 
     @Test

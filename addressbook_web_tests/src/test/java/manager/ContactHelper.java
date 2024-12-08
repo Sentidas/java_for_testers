@@ -68,6 +68,14 @@ public class ContactHelper extends HelperBase {
         type(By.name("firstname"), contact.first_name());
         type(By.name("middlename"), contact.middle_name());
         type(By.name("lastname"), contact.last_name());
+        type(By.name("address"), contact.address());
+        type(By.name("email"), contact.email());
+        type(By.name("mobile"), contact.mobile());
 
+    }
+
+    public int getCount() {
+        openHomePage();
+        return manager.driver.findElements(By.name("selected[]")).size();
     }
 }

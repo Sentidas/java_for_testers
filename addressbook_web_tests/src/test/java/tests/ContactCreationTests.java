@@ -19,7 +19,13 @@ public class ContactCreationTests extends TestBase {
                     for (var address : List.of("", "address_name")) {
                         for (var email : List.of("", "email")) {
                             for (var mobile : List.of("", "mobile")) {
-                                result.add(new ContactData(firstname, middlename, lastname, address, email, mobile));
+                                result.add(new ContactData()
+                                        .withFirstName(firstname)
+                                        .withMiddleName(middlename)
+                                        .withLastName(lastname)
+                                        .withAddress(address)
+                                        .withEmail(email)
+                                        .withMobile(mobile));
                             }
                         }
                     }
@@ -27,8 +33,13 @@ public class ContactCreationTests extends TestBase {
             }
         }
         for (int i = 1; i <= 5; i++) {
-            result.add(new ContactData(ramdomString(i * 10), ramdomString(i * 10), ramdomString(i * 10),
-                    ramdomString(i * 10), ramdomString(i * 10), ramdomString(i * 10)));
+            result.add(new ContactData()
+                    .withFirstName(ramdomString(i * 10))
+                    .withMiddleName(ramdomString(i * 10))
+                    .withLastName(ramdomString(i * 10))
+                    .withAddress(ramdomString(i * 10))
+                    .withEmail(ramdomString(i * 10))
+                    .withMobile(ramdomString(i * 10)));
         }
         return result;
     }
@@ -45,12 +56,12 @@ public class ContactCreationTests extends TestBase {
 
     public static List<ContactData> negativeContactProvider() {
         return new ArrayList<>(List.of(
-                new ContactData("first ' name", "", "", "", "", ""),
-                new ContactData("", "middle ' name", "", "", "", ""),
-                new ContactData("", "", "last ' name", "", "", ""),
-                new ContactData("", "", "", "address '", "", ""),
-                new ContactData("", "", "", "", "email'email", ""),
-                new ContactData("", "", "", "", "", "mobile ' fhone")));
+                new ContactData("", "first ' name", "", "", "", "", ""),
+                new ContactData("","", "middle ' name", "", "", "", ""),
+                new ContactData("","", "", "last ' name", "", "", ""),
+                new ContactData("","", "", "", "address '", "", ""),
+                new ContactData("","", "", "", "", "email'email", ""),
+                new ContactData("","", "", "", "", "", "mobile ' fhone")));
     }
 
     @ParameterizedTest

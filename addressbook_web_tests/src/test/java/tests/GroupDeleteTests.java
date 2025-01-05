@@ -18,7 +18,6 @@ public class GroupDeleteTests extends TestBase {
         }
         List<GroupData> oldGroups = app.groups().getList();
         var index = new Random().nextInt(oldGroups.size());
-
         app.groups().removeGroup(oldGroups.get(index));
         List<GroupData> newGroups = app.groups().getList();
         List<GroupData> expectedList = new ArrayList<>(oldGroups);
